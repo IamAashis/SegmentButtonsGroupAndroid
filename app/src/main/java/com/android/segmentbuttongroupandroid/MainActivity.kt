@@ -1,7 +1,10 @@
 package com.android.segmentbuttongroupandroid
 
+import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -18,7 +21,7 @@ import androidx.transition.TransitionManager
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var motionLayout: MotionLayout
+    lateinit var motionLayout: CustomMotionLayout
     lateinit var guideline: Guideline
     lateinit var leftText: TextView
     lateinit var rightText: TextView
@@ -83,6 +86,49 @@ class MainActivity : AppCompatActivity() {
         })
 
 
+        val startConstraintSet = motionLayout.getConstraintSet(R.id.start)
+        val endConstraintSet = motionLayout.getConstraintSet(R.id.end)
+
+        var isButtonOnLeft = true // Track the current position of the button
+
+
+        motionLayout.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    val touchX = event.rawX
+                    val rightViewX = rightText.x
+                    val leftViewX = leftText.x + leftText.width
+
+                    if (isButtonOnLeft && touchX >= rightViewX) {
+                        // Move the button from left to right
+                        motionLayout.transitionToEnd()
+                        isButtonOnLeft = false
+                        true
+                    } else if (!isButtonOnLeft && touchX < leftViewX) {
+                        // Move the button from right to left
+                        motionLayout.transitionToStart()
+                        isButtonOnLeft = true
+                        true
+                    } else {
+                        false
+                    }
+                }
+                MotionEvent.ACTION_UP -> {
+                    motionLayout.performClick() // Call performClick() when the touch is released
+                    true
+                }
+                else -> false
+            }
+        }
+
+
+
+
+
+
     }
+
+
+
 
 }

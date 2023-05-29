@@ -7,13 +7,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:background="#F2F3F8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.android.segmentbuttongroupandroid.CustomMotionLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/mltMotionLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,49 +24,44 @@
             <View
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/corner_radius_eight"
-                tools:layout_editor_absoluteX="147dp"
-                tools:layout_editor_absoluteY="230dp" />
+                android:layout_height="64dp"
+                android:background="@drawable/corner_radius_eight" />
 
             <TextView
                 android:id="@+id/txvBuyForOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Buy for other"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline_start"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_start"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintGuide_percent="0.5"
                 android:orientation="vertical"
-                android:visibility="invisible"
-                app:layout_constraintGuide_begin="186dp" />
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/txvBuyForMe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Buy for me"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/guideline_start"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-
-        </com.android.segmentbuttongroupandroid.CustomMotionLayout>
-
+                app:layout_constraintStart_toEndOf="@+id/guideline_start"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

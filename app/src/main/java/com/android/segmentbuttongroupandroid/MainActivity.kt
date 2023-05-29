@@ -1,27 +1,17 @@
 package com.android.segmentbuttongroupandroid
 
-import android.content.Context
-import android.graphics.PorterDuff
-import android.graphics.Rect
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.Guideline
 import androidx.core.content.ContextCompat
-import androidx.transition.TransitionManager
-
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var motionLayout: CustomMotionLayout
+    lateinit var motionLayout: MotionLayout
     lateinit var guideline: Guideline
     lateinit var leftText: TextView
     lateinit var rightText: TextView
@@ -60,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val buttonRightPosition = buttonPosition + buttonWidth
 
                 val isAlignedToLeft = buttonPosition <= guidelinePosition
-                val isAlignedToRight = buttonRightPosition >= guidelinePosition
+                val isAlignedToRight = buttonRightPosition > guidelinePosition
 
                 if (isAlignedToRight) {
                     Toast.makeText(this@MainActivity, "right", Toast.LENGTH_SHORT).show()
@@ -92,9 +82,9 @@ class MainActivity : AppCompatActivity() {
         var isButtonOnLeft = true // Track the current position of the button
 
 
-        motionLayout.setOnTouchListener { _, event ->
+  /*      motionLayout.setOnTouchListener { _, event ->
             when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
+               *//* MotionEvent.ACTION_DOWN -> {
                     val touchX = event.rawX
                     val rightViewX = rightText.x
                     val leftViewX = leftText.x + leftText.width
@@ -112,14 +102,14 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         false
                     }
-                }
+                }*//*
                 MotionEvent.ACTION_UP -> {
                     motionLayout.performClick() // Call performClick() when the touch is released
                     true
                 }
                 else -> false
             }
-        }
+        }*/
 
 
 

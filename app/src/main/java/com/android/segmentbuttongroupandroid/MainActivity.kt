@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
         val startConstraintSet = motionLayout.getConstraintSet(R.id.start)
         val endConstraintSet = motionLayout.getConstraintSet(R.id.end)
 
